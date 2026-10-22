@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Registro de Estudiante - EduNivel</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 50%;
+            max-width: 600px;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 { color: #0056b3; text-align: center; }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .btn {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 10px;
+        }
+        .btn:hover { background-color: #218838; }
+        
+        .btn-volver {
+            background-color: #6c757d;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+        }
+        .btn-volver:hover { background-color: #5a6268; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Registrar Estudiante</h1>
+        <form action="/guardar-estudiante" method="POST">
+            <div class="form-group">
+                <label for="codigo">Código del Estudiante:</label>
+                <input type="text" id="codigo" name="codigo" required placeholder="Ej: EST-001">
+            </div>
+            
+            <div class="form-group">
+                <label for="curso">Curso:</label>
+                <input type="text" id="curso" name="curso" required placeholder="Ej: 6to Secundaria">
+            </div>
+            
+            <div class="form-group">
+                <label for="paralelo">Paralelo:</label>
+                <input type="text" id="paralelo" name="paralelo" required placeholder="Ej: A">
+            </div>
+            
+            <div class="form-group">
+                <label for="gestion">Gestión:</label>
+                <input type="number" id="gestion" name="gestion" required placeholder="Ej: 2026">
+            </div>
+            
+            <button type="submit" class="btn">Guardar Estudiante</button>
+        </form>
+        
+        <a href="/" class="btn-volver">Volver al inicio</a>
+    </div>
+</body>
+</html>

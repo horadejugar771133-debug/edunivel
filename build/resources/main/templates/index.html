@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>EduNivel - Sistema de Evaluación</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            width: 60%;
+            margin: auto;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1 { color: #0056b3; }
+        p { font-size: 18px; }
+        .menu {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .btn {
+            color: white;
+            padding: 15px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            min-width: 200px;
+        }
+        .btn-registro { background-color: #28a745; }
+        .btn-eval { background-color: #17a2b8; }
+        .btn-ayuda { background-color: #dc3545; }
+        .btn-lista { background-color: #6c757d; }
+        .btn:hover { opacity: 0.8; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 th:text="${titulo}">Bienvenido a EduNivel</h1>
+        <p th:text="${mensaje}">Sistema para determinar el nivel de preparación académica</p>
+        <p>¡Selecciona una opción del menú!</p>
+        
+        <div class="menu">
+            <a href="/registro" class="btn btn-registro">📝 Registrar Estudiante</a>
+            <a href="/evaluacion" class="btn btn-eval">📊 Evaluar Estudiante</a>
+            <a href="/ayuda" class="btn btn-ayuda">🚨 Estudiantes en Riesgo</a>
+            <a href="/evaluaciones" class="btn btn-lista"> Ver Evaluaciones</a>
+        </div>
+    </div>
+</body>
+</html>
