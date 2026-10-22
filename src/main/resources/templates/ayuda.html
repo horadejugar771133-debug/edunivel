@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Estudiantes que necesitan ayuda - EduNivel</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; padding: 20px; }
+        .container { background: white; padding: 30px; border-radius: 10px; width: 80%; margin: auto; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        h1 { color: #dc3545; text-align: center; }
+        table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+        th, td { padding: 12px; border: 1px solid #ddd; text-align: center; }
+        th { background-color: #dc3545; color: white; }
+        tr:nth-child(even) { background-color: #f9f9f9; }
+        .btn-volver { background-color: #6c757d; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block; margin-top: 20px; }
+        .alerta { background-color: #f8d7da; color: #721c24; padding: 15px; border-radius: 5px; text-align: center; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1> Estudiantes que Necesitan Ayuda</h1>
+        
+        <div class="alerta">
+            <strong>Atención:</strong> Estos estudiantes tienen nivel BAJO (puntaje menor a 50) 
+            y requieren apoyo académico urgente.
+        </div>
+
+        <table th:if="${!#lists.isEmpty(estudiantesAyuda)}">
+            <thead>
+                <tr>
+                    <th>ID Evaluación</th>
+                    <th>ID Estudiante</th>
+                    <th>Matemática</th>
+                    <th>Comprensión Lectora</th>
+                    <th>Razonamiento Lógico</th>
+                    <th>Competencia Digital</th>
+                    <th>Puntaje General</th>
+                    <th>Nivel</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="ev : ${estudiantesAyuda}">
+                    <td th:text="${ev.id_evaluacion}"></td>
+                    <td th:text="${ev.id_estudiante}"></td>
+                    <td th:text="${ev.matematica}"></td>
+                    <td th:text="${ev.comprension_lectora}"></td>
+                    <td th:text="${ev.razonamiento_logico}"></td>
+                    <td th:text="${ev.competencia_digital}"></td>
+                    <td th:text="${#numbers.formatDecimal(ev.puntaje_general, 1, 2)}"></td>
+                    <td style="color: red; font-weight: bold;" th:text="${ev.nivel}"></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <p th:if="${#lists.isEmpty(estudiantesAyuda)}" style="text-align: center; color: green; font-size: 18px;">
+            ✅ ¡Excelente! No hay estudiantes con nivel BAJO en este momento.
+        </p>
+
+        <a href="/" class="btn-volver">Volver al inicio</a>
+    </div>
+</body>
+</html>
